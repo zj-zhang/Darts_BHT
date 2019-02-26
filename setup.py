@@ -23,7 +23,7 @@ def main():
 		scripts=['bin/Darts_BHT'],
 
 		install_requires=[
-			'rpy2',
+			#'rpy2',
 			#'cython==0.27.0', # for compiling rmats-turbo
 			'm2r',   # for doc build
 			]
