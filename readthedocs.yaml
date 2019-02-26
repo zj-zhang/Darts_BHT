@@ -1,0 +1,9 @@
+# .readthedocs.yml
+
+version: 2
+
+python:
+  version: 2.7
+  install:
+     - method: pip
+       path: .
