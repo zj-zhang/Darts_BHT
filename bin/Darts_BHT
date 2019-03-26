@@ -38,7 +38,7 @@ def main():
 	subcommand = args.subcommand
 	
 	if subcommand == 'rmats_count':
-		from Darts_BHT.rmatspipeline import run_pipe
+		from rmatspipeline import run_pipe
 		args = process_parsed_rmats_args(args)
 		run_pipe(args)
 		

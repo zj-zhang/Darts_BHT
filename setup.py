@@ -5,6 +5,7 @@ import os
 on_rtd = os.environ.get('READTHEDOCS') == 'True'
 
 def main():
+	install_requires = ['m2r'] if on_rtd else []
 	setup(
 		name='Darts_BHT',
 		  
@@ -20,13 +21,14 @@ def main():
 
 		packages=['Darts_BHT'],
 
-		scripts=['bin/Darts_BHT'],
+		scripts=[],
 
-		install_requires=[
-			#'rpy2',
-			#'cython==0.27.0', # for compiling rmats-turbo
-			'm2r',   # for doc build
-			]
+		install_requires=install_requires
+		#[
+		#	#'rpy2',
+		#	#'cython==0.27.0', # for compiling rmats-turbo
+		#	'm2r',   # for doc build
+		#	]
 		 )
 	if not on_rtd:
 		from rpy2.robjects.packages import importr
