@@ -20,12 +20,12 @@ Bayesian Hypothesis Testing (BHT) *v0.1.0*
    get_started
    readme
    modules
+   links
    license
    changelog
 
 
 .. mdinclude:: get_started.md
-
 
 Indices and tables
 ==================
