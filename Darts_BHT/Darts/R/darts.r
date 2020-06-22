@@ -11,6 +11,7 @@
 # revised 7.30.2017: moved testing function out to a new file `darts_test.r`
 # revised 12.1.2017: modified proposal_width in `rdarts_bayesian_gibbs` to adjust for large counts (>10^4)
 # revised 12.10.2017: modified init_value and optim_method for better avoiding optim failure in replicate model
+# revised 6.21.2020: added a check for `det_lap_sigma ` to catch error in NaN determinant
 
 #library(pROC)
 #library(Rcpp)
@@ -270,9 +271,12 @@ myLaplace = function(log_func, gr_func, init_value, data, method='Nelder-Mead', 
 	if(class(lap_sigma)=="try-error")
 	{
 		return(list(MAP=theta_hat, hess=hess, integral=NA))
-		#sigma = ginv(-hess)
 	}
 	det_lap_sigma = ifelse(n_par>1, det(lap_sigma), lap_sigma)
+	if(is.nan(det_lap_sigma)) {
+		return(list(MAP=theta_hat, hess=hess, integral=NA))
+	}
+	#print(det_lap_sigma)
 	if(det_lap_sigma<0) {det_lap_sigma=abs(det_lap_sigma);msg='Sigma not PD.'}
 	sqrt_sigma = sqrt(det_lap_sigma)
 	#if(sqrt_sigma<10^-16 || is.na(sqrt_sigma)) {sqrt_sigma=10^-16; msg='Truncated sqrt_sigma'}

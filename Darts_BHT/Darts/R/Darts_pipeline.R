@@ -26,7 +26,7 @@ Darts = function(in_fn, out_fn, out_RData_fn=NULL, C=0.05, rescale_meth=1, rho_f
 	#out_fn = file.path(out_dir, ifelse(is.na(rho_fn), 'darts_bht.flat.RData', 'dart_bht.info.RData'))
 	#out_table_fn = file.path(out_dir, ifelse(is.na(rho_fn), 'darts_bht.flat.txt', 'dart_bht.info.txt'))
 	if(class(in_fn)=="character") {
-		data=read.table(in_fn, sep='\t', header=T)
+		data=read.table(in_fn, sep='\t', header=T, stringsAsFactors=F)
 	} else if(class(in_fn)=="data.frame")
 	{
 		data = in_fn
